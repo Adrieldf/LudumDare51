@@ -6,7 +6,7 @@ public class Orbit : MonoBehaviour
 {
     [Header("Orbit")]
     public bool orbit = true;
-    public Transform centre;
+    public Transform center;
     public float radius;
     public float orbitSpeed = 15f;
     public float angle;
@@ -33,8 +33,8 @@ public class Orbit : MonoBehaviour
 
         radian = angle * (Mathf.PI / 180); // convert degrees to radians
 
-        float x = (Mathf.Cos(radian) * radius) + centre.position.x; // calculate x position of orbiting object
-        float y = (Mathf.Sin(radian) * radius) + centre.position.y; // calculate y position of orbiting object
+        float x = (Mathf.Cos(radian) * radius) + center.position.x; // calculate x position of orbiting object
+        float y = (Mathf.Sin(radian) * radius) + center.position.y; // calculate y position of orbiting object
 
         transform.position = new Vector2(x, y); // apply new position to orbiting object
 
