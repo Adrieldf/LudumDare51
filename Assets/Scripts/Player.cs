@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private float Health = 3.0f;
+    [SerializeField]
+    private Collider2D attackRange;
+    [SerializeField]
+    private GameObject attackTargetIndicator;
 
     private float invencibilityTimeLeft = 0f;
+    private GameObject targetToAttack;
 
     void Start()
     {
@@ -16,6 +22,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (targetToAttack == null)
+        {
+            attackTargetIndicator.SetActive(false);
+        }
+        else
+        {
+            Vector3 pos = targetToAttack.transform.position;
+            Vector3 viewPortPos = Camera.main.WorldToViewportPoint(pos);
+            viewPortPos.y += 5;
+            attackTargetIndicator.transform.position = viewPortPos;
+        }
+
+
         if (invencibilityTimeLeft > 0f)
             invencibilityTimeLeft -= Time.deltaTime;
     }
@@ -50,5 +69,26 @@ public class Player : MonoBehaviour
     {
         Destroy(gameObject, 0.5f);
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        GameObject nearObject = null;
+        float nearObjectDistance = 0f;
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            float curDistance = Vector3.Distance(contact.otherCollider.transform.position, transform.position);
 
+            if (!nearObject || curDistance < nearObjectDistance)
+            {
+                nearObjectDistance = curDistance;
+                nearObject = contact.otherCollider.gameObject;
+            }
+
+        }
+        targetToAttack = nearObject;
+    }
+
+    public GameObject GetTargetToAttack()
+    {
+        return targetToAttack;
+    }
 }

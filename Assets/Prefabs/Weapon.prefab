@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2659209764802124378}
   - component: {fileID: 2659209764802124381}
-  - component: {fileID: 2659209764802124380}
+  - component: {fileID: 1434231141}
+  - component: {fileID: 1434231142}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +84,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2659209764802124380
+--- !u!58 &1434231141
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659209764802124383}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1434231142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,16 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2659209764802124383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa1486240362eb94bb5e936b220f582f, type: 3}
+  m_Script: {fileID: 11500000, guid: b1892b6093fa9104abab093174a78b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbit: 1
-  center: {fileID: 0}
-  radius: 1
-  orbitSpeed: 15
-  angle: 0
-  rotate: 1
-  syncRotations: 1
-  syncSpeeds: 1
-  rotationSpeed: 15
-  angleRotation: 0
+  AttackDamage: 1
